@@ -13,7 +13,7 @@
         <input type="text" placeholder="Cerca per titolo">
         <button type="submit">Cerca</button>
         <ul>
-            <li>{{message}}</li>
+            <li v-for="film in films">{{film}}</li>
         </ul>
     </div>
     
