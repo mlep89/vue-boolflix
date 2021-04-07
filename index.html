@@ -14,7 +14,7 @@
     <div class="main_container" id="root">
         <div class="search_bar">
             <input v-model="userSearch" type="text" placeholder="Cerca per titolo">
-            <button @click="searchFilm" type="submit">Cerca</button>
+            <button @click="searchFilm(); searchSerie()" type="submit">Cerca</button>
         </div>
         <div class="results_container">
             <div class="film_container">
@@ -38,7 +38,16 @@
             <div class="serie_container">
                 <h3>Serie TV</h3>
                 <ul>
-                    <li></li>
+                    <li v-for="serie in series">
+                    <p>Titolo:{{serie.name}}</p>
+                    <br>
+                    <img :src="'https://image.tmdb.org/t/p/'+ 'w154' + serie.poster_path" alt="">
+                     <br>
+                    <p>Titolo Originale:{{serie.original_name}}</p>
+                     <br>
+                    <p>Lingua:{{serie.original_language}}</p>
+                     <br>
+                    </li>
                 </ul>
             </div>
         </div>
