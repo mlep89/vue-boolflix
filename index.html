@@ -11,10 +11,12 @@
     <title>Vue Boolfix</title>
 </head>
 <body>
-    <div class="main_container" id="root">
-        <div class="search_bar">
-            <input v-model="userSearch" type="text" placeholder="Cerca per titolo">
-            <button @click="searchFilm(userSearch); searchSerie(userSearch)" type="submit">Cerca</button>
+    <div id="root">
+        <div class="main_container">
+            <div class="search_bar">
+                <input v-model="userSearch" type="text" placeholder="Cerca per titolo">
+                <button @click="searchFilm(userSearch); searchSerie(userSearch)" type="submit">Cerca</button>
+            </div>
         </div>
         <div class="results_container">
             <div class="film_container">
@@ -24,12 +26,12 @@
                     <p>Titolo:{{film.title}}</p>
                     <br>
                     <img :src="'https://image.tmdb.org/t/p/'+ 'w154' + film.poster_path" alt="">
-                     <br>
+                    <br>
                     <p>Titolo Originale:{{film.original_title}}</p>
-                     <br>
+                    <br>
                     <p>Lingua:{{film.original_language}}</p>
-                     <br>
-                     <p>{{film.vote_average}}</p> 
+                    <br>
+                    <p>{{film.vote_average}}</p> 
                     <i class="far fa-star"></i> <!--stella vuota-->
                     <i class="fas fa-star"></i> <!--stella piena-->
                 </li>
@@ -39,19 +41,20 @@
                 <h3>Serie TV</h3>
                 <ul>
                     <li v-for="serie in series">
-                    <p>Titolo:{{serie.name}}</p>
-                    <br>
-                    <img :src="'https://image.tmdb.org/t/p/'+ 'w154' + serie.poster_path" alt="">
-                     <br>
-                    <p>Titolo Originale:{{serie.original_name}}</p>
-                     <br>
-                    <p>Lingua:{{serie.original_language}}</p>
-                     <br>
+                        <p>Titolo:{{serie.name}}</p>
+                        <br>
+                        <img :src="'https://image.tmdb.org/t/p/'+ 'w154' + serie.poster_path" alt="">
+                         <br>
+                        <p>Titolo Originale:{{serie.original_name}}</p>
+                         <br>
+                        <p>Lingua:{{serie.original_language}}</p>
+                         <br>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+    
     
 
     <script src="js/main.js"></script>
