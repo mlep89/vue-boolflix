@@ -14,7 +14,7 @@
     <div class="main_container" id="root">
         <div class="search_bar">
             <input v-model="userSearch" type="text" placeholder="Cerca per titolo">
-            <button @click="searchFilm(); searchSerie()" type="submit">Cerca</button>
+            <button @click="searchFilm(userSearch); searchSerie(userSearch)" type="submit">Cerca</button>
         </div>
         <div class="results_container">
             <div class="film_container">
