@@ -13,49 +13,59 @@
 <body>
     <div id="root">
         <div class="main_container">
+            <img src="img/boolflix.png" alt="">
             <div class="search_bar">
-                <input v-model="userSearch" type="text" placeholder="Cerca per titolo">
-                <button @click="searchFilm(userSearch); searchSerie(userSearch)" type="submit">Cerca</button>
+                <input class="my_input" v-model="userSearch" type="text" placeholder="Cerca per titolo" v-on:keyup.enter="searchFilm(userSearch); searchSerie(userSearch)">
             </div>
         </div>
         <div class="results_container">
-            <div class="film_container">
-                <h3>Film</h3>
-            <ul>
-                <li v-for="film in films">
-                    <p>Titolo:{{film.title}}</p>
-                    <br>
-                    <img :src="'https://image.tmdb.org/t/p/'+ 'w154' + film.poster_path" alt="">
-                    <br>
-                    <p>Titolo Originale:{{film.original_title}}</p>
-                    <br>
-                    <p>Lingua:{{film.original_language}}</p>
-                    <br>
-                    <p>{{film.vote_average}}</p> 
-                    <i class="far fa-star"></i> <!--stella vuota-->
-                    <i class="fas fa-star"></i> <!--stella piena-->
-                </li>
-            </ul>
-            </div>
-            <div class="serie_container">
-                <h3>Serie TV</h3>
-                <ul>
-                    <li v-for="serie in series">
-                        <p>Titolo:{{serie.name}}</p>
+            <div v-for="film in films" class="film_container">
+                <img class="path_img" :src="'https://image.tmdb.org/t/p/'+ 'w342' + film.poster_path" alt="">
+                <div class="film_container_hover">
+                    <div class="header_hover" v-if="film.title == film.original_title">
+                        <h3>Titolo: {{film.title}}</h3>  
+                    </div>
+                    <div class="header_hover" v-else>
+                        <h3>Titolo: {{film.title}}</h3>  
+                        <h3>Titolo Originale: {{film.original_title}}</h3>
+                    </div>
+                    <div class="main_hover" v-if="film.overview != '' ">
+                        <p>{{film.overview}}</p>
+                    </div>
+                    <div class="main_hover" v-else>
+                        <p>Nessuna descrizione disponibile</p>
+                    </div>
+                    <div class="footer_hover">
+                        <img class="flag" v-if="availableFlags.includes(film.original_language)" :src="getFlag(film.original_language)" alt="">
+                        <p v-else>Lingua:{{film.original_language}}</p>
                         <br>
-                        <img :src="'https://image.tmdb.org/t/p/'+ 'w154' + serie.poster_path" alt="">
-                         <br>
-                        <p>Titolo Originale:{{serie.original_name}}</p>
-                         <br>
-                        <p>Lingua:{{serie.original_language}}</p>
-                         <br>
-                        <p>{{serie.vote_average}}</p> 
-                        <i class="far fa-star"></i> <!--stella vuota-->
-                        <i class="fas fa-star"></i> <!--stella piena-->
-                    </li>
-                </ul>
+                        <i v-for="i in getVote(film.vote_average)" class="fas fa-star"></i>
+                        <i v-for="i in (5 - getVote(film.vote_average))" class="far fa-star"></i>
+                    </div>
+                </div>
             </div>
+                <!--<div class="serie_container">
+                    <h3>Serie TV</h3>
+                    <ul>
+                        <li v-for="serie in series">
+                            <p>Titolo:{{serie.name}}</p>
+                            <br>
+                            <img :src="'https://image.tmdb.org/t/p/'+ 'w154' + serie.poster_path" alt="">
+                             <br>
+                            <p>Titolo Originale:{{serie.original_name}}</p>
+                             <br>
+                            <p>Lingua:{{serie.original_language}}</p>
+                             <br>
+                            <p>{{serie.vote_average}}</p> 
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </li>
+                    </ul>
+                </div> -->
         </div>
+        
     </div>
     
     

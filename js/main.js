@@ -3,6 +3,7 @@ var root = new Vue({
     data: {
     films: [],
     series: [],
+    availableFlags: ["it", "en", "fr", "de","es","ch","da","ja","ga","pt","zh","tr","nl","hi","kn","sv","te"],
     userSearch: '',
     },
     methods: {
@@ -11,15 +12,18 @@ var root = new Vue({
                 axios
                 .get('https://api.themoviedb.org/3/search/movie?api_key=e1e83484b58b02a9d475b9cb41829bfe&language=it-IT&page=1&include_adult=false&query='+ this.userSearch)
                 .then( (response) => {
-                    response.data.results.forEach(film => {
-                        film.vote_average = Math.ceil(film.vote_average)/2;
-                    })
                     this.films = response.data.results;
                 })
             }
             else {
                 this.films = [];
             }
+        },
+        getVote(vote){
+            return parseInt(vote/2);
+        },
+        getFlag(lang){
+            return `img/${lang}.png`
         },
         searchSerie: function(userSearch){
             if (userSearch != '') {
@@ -36,11 +40,6 @@ var root = new Vue({
                 this.series = [];
             }
         },
-        starValue: function(){
-            for (i=0; i < 6; i++) {
-                
-            }
-        }
     }
     });
 
