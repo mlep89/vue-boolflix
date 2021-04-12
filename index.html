@@ -19,15 +19,15 @@
             </div>
         </div>
         <div class="results_container">
-            <div v-for="film in films" class="film_container">
-                <img class="path_img" :src="'https://image.tmdb.org/t/p/'+ 'w342' + film.poster_path" alt="">
-                <div class="film_container_hover">
+            <div v-for="film in films" class="film_container" :style="{ backgroundImage: 'url(' + image +'w342' + film.poster_path +')' }">
+                <!--<img class="path_img" :src="'https://image.tmdb.org/t/p/'+ 'w342' + film.poster_path" alt="" @mouseover="" @mouseleave=""> -->
+                <div class="film_container_hover" @mouseover="mouseOver" @mouseleave="mouseLeave">
                     <div class="header_hover" v-if="film.title == film.original_title">
                         <h3>Titolo: {{film.title}}</h3>  
                     </div>
                     <div class="header_hover" v-else>
-                        <h3>Titolo: {{film.title}}</h3>  
-                        <h3>Titolo Originale: {{film.original_title}}</h3>
+                        <h3>{{film.title}}</h3>  
+                        <h3>{{film.original_title}}</h3>
                     </div>
                     <div class="main_hover" v-if="film.overview != '' ">
                         <p>{{film.overview}}</p>

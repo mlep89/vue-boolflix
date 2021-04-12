@@ -40,36 +40,40 @@
     margin-right: 30px;
     border: 2px solid white;
 }
+.film_container_hover:hover {
+    visibility: visible;
+}
+.film_container_hover {
+    visibility: hidden;
+}
+
 .path_img {
     height: 100%;
     width: 100%;
 }
-.film_container > img:hover {
-    display: none;
-}
-.film_container_hover {
+.header_hover,
+.main_hover,
+.footer_hover {
+    width: 100%;
     background-color: black;
     color: white;
     padding: 10px;
     text-align: center;
 }
 .header_hover {
-    height: 20%;
-    width: 100%;
+    height: 10%;
 }
 .main_hover {
-    width: 100%;
     height: 60%;
     vertical-align: middle;
     overflow: scroll;
 }
 .footer_hover {
-    width: 100%;
     height: 30%;
 }
 .flag {
-    width: 100px;
-    height: 67px;
+    width: 30%;
+    height: 50%;
 }
 .fa-star {
     color: yellow;

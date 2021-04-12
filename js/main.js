@@ -1,6 +1,7 @@
 var root = new Vue({
     el: '#root',
     data: {
+    image: "https://image.tmdb.org/t/p/",
     films: [],
     series: [],
     availableFlags: ["it", "en", "fr", "de","es","ch","da","ja","ga","pt","zh","tr","nl","hi","kn","sv","te"],
@@ -40,6 +41,9 @@ var root = new Vue({
                 this.series = [];
             }
         },
+        mouseOver: function(){
+            
+        }
     }
     });
 
